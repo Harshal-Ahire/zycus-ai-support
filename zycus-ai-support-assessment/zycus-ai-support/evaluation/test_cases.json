@@ -1,0 +1,92 @@
+{
+  "triage": [
+    {
+      "name": "known_issue",
+      "ticket_id": "TKT-10008",
+      "criteria": [
+        "knowledge_base_matches",
+        "draft_response"
+      ]
+    },
+    {
+      "name": "how_to",
+      "ticket_id": "TKT-10100",
+      "criteria": [
+        "knowledge_base_matches",
+        "draft_response"
+      ]
+    },
+    {
+      "name": "integration",
+      "ticket_id": "TKT-10395",
+      "criteria": [
+        "knowledge_base_matches",
+        "draft_response"
+      ]
+    },
+    {
+      "name": "performance",
+      "ticket_id": "TKT-10389",
+      "criteria": [
+        "knowledge_base_matches",
+        "draft_response"
+      ]
+    },
+    {
+      "name": "adversarial_ambiguous",
+      "subject": "Something is wrong",
+      "body": "It is not working and I need help. No product, error code, or impact is provided.",
+      "criteria": [
+        "category",
+        "urgency",
+        "draft_response"
+      ]
+    }
+  ],
+  "tam": [
+    {
+      "name": "at_risk",
+      "account_id": "ACC-3336",
+      "criteria": [
+        "executive_summary",
+        "open_risks",
+        "talking_points"
+      ]
+    },
+    {
+      "name": "at_risk_2",
+      "account_id": "ACC-8113",
+      "criteria": [
+        "executive_summary",
+        "open_risks"
+      ]
+    },
+    {
+      "name": "healthy",
+      "account_id": "ACC-3033",
+      "criteria": [
+        "executive_summary",
+        "talking_points"
+      ]
+    },
+    {
+      "name": "new",
+      "account_id": "ACC-7893",
+      "criteria": [
+        "executive_summary",
+        "talking_points"
+      ]
+    },
+    {
+      "name": "adversarial_missing",
+      "account_id": "ACC-DOES-NOT-EXIST",
+      "criteria": [
+        "account_found",
+        "executive_summary"
+      ],
+      "expected": {
+        "account_found": false
+      }
+    }
+  ]
+}

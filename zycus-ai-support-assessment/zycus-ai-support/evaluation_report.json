@@ -1,0 +1,67 @@
+{
+  "tests": [
+    {
+      "task": "triage",
+      "name": "known_issue",
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task": "triage",
+      "name": "how_to",
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task": "triage",
+      "name": "integration",
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task": "triage",
+      "name": "performance",
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task": "triage",
+      "name": "adversarial_ambiguous",
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task": "tam",
+      "name": "at_risk",
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task": "tam",
+      "name": "at_risk_2",
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task": "tam",
+      "name": "healthy",
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task": "tam",
+      "name": "new",
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task": "tam",
+      "name": "adversarial_missing",
+      "score": 1.0,
+      "passed": true
+    }
+  ],
+  "overall_score": 1.0,
+  "passed": 10,
+  "total": 10
+}
