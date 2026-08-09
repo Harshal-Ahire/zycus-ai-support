@@ -1,4 +1,3 @@
-Yes — paste the following **directly into the GitHub README editor**. This is the cleaned-up version:
 
 # AI Technical Support and TAM Assistant
 
