@@ -1,3 +1,5 @@
+Yes — paste the following **directly into the GitHub README editor**. This is the cleaned-up version:
+
 # AI Technical Support and TAM Assistant
 
 This project implements the four tasks from the Zycus technical assessment: ticket triage, TAM account health summarisation, an evaluation harness, and a production design note.
@@ -6,21 +8,21 @@ The solution uses only the supplied synthetic tickets, account summaries, and pr
 
 ## Stack
 
-- Python
-- FastAPI
-- Streamlit
-- Gemini API
-- scikit-learn TF-IDF retrieval
-- Pydantic
-- pytest
+* Python
+* FastAPI
+* Streamlit
+* Gemini API
+* scikit-learn TF-IDF retrieval
+* Pydantic
+* pytest
 
-## Repository structure
+## Repository Structure
 
 ```text
 app/                    Application logic
-app/triage/             Ticket triage pipeline and prompt
-app/tam/                Account health pipeline and prompt
-data/                   Supplied tickets and accounts
+app/triage/             Ticket triage pipeline and prompts
+app/tam/                Account health pipeline and prompts
+data/                   Supplied tickets and account data
 knowledge-base/         Supplied Markdown knowledge base
 evaluation/             Evaluation cases and scoring
 scripts/                Local utility scripts
@@ -37,13 +39,13 @@ Create a virtual environment:
 python -m venv .venv
 ```
 
-Windows:
+### Windows
 
 ```bash
 .venv\Scripts\activate
 ```
 
-macOS/Linux:
+### macOS/Linux
 
 ```bash
 source .venv/bin/activate
@@ -55,7 +57,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Set the Gemini API key:
+Set the Gemini API key as an environment variable:
 
 ```text
 GEMINI_API_KEY=your_api_key_here
@@ -79,7 +81,7 @@ POST /triage
 POST /account-health
 ```
 
-Example triage request:
+### Example triage request
 
 ```json
 {
@@ -88,7 +90,7 @@ Example triage request:
 }
 ```
 
-Example account request:
+### Example account health request
 
 ```json
 {
@@ -104,30 +106,54 @@ streamlit run ui/streamlit_app.py
 
 The UI provides both ticket triage and TAM account health flows.
 
-## Run the evaluation harness
+## Run the Evaluation Harness
 
 ```bash
-python scripts/run_evaluation.py
+python -m scripts.run_evaluation
 ```
 
-The harness has five cases for each task, including an adversarial case for each task. It compares expected values where available and checks required output fields. The report contains a 0-1 score and pass/fail result for every case.
+The harness contains five cases for each task, including an adversarial case for each task. It compares expected values where available and checks required output fields.
 
-## Run pytest
+Each case produces a score between 0 and 1 along with a pass/fail result.
+
+## Run Tests
 
 ```bash
 pytest
 ```
 
-## Design choices
+The current test suite covers the evaluation cases and API behaviour.
 
-Ticket triage uses a small retrieval layer before generation. The Markdown knowledge base is split by heading and indexed with TF-IDF. This keeps retrieval local, fast, and reproducible for the small supplied corpus.
+## Design Choices
 
-The account health flow first retrieves the account and its last 90 days of tickets. Deterministic rules identify obvious risk signals before the LLM creates the final brief. This makes risk detection easier to test and prevents the LLM from being the only source of business-risk detection.
+### Ticket Triage
 
-Gemini is called with temperature 0.0. Outputs are also validated with Pydantic models so the API has a stable schema.
+Ticket triage uses a small retrieval layer before generation. The Markdown knowledge base is split by heading and indexed with TF-IDF.
 
-## Prompt versions
+This keeps retrieval local, fast, and reproducible for the small supplied corpus.
 
-Task 1 prompt: `triage-v1`
+### TAM Account Health
 
-Task 2 prompt: `tam-v1`
+The account health flow first retrieves the account and its last 90 days of tickets.
+
+Deterministic rules identify obvious risk signals before the LLM creates the final account brief. This makes risk detection easier to test and prevents the LLM from being the only source of business-risk detection.
+
+### LLM Output
+
+Gemini is called with temperature `0.0`.
+
+Outputs are validated with Pydantic models so the API maintains a stable response schema.
+
+## Prompt Versions
+
+* Task 1 prompt: `triage-v1`
+* Task 2 prompt: `tam-v1`
+
+## Evaluation Result
+
+The local evaluation harness currently passes all 10 evaluation cases:
+
+```text
+Overall score: 1.0
+Passed: 10/10
+```
